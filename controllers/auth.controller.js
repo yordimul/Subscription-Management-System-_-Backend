@@ -97,16 +97,27 @@ if (!isPasswordCorrect) {
 
 
 return res.status(200).json({
-    message:'login successfully', data: {
-        token,
-        user: existingUser[0],
-      },
-
-})
-
+  message: "login successfully",
+  data: {
+    token,
+    user_id: existingUser._id.toString(),
+    user: {
+      _id: existingUser._id,
+      name: existingUser.name,
+      email: existingUser.email
+    }
+  }
+});
 
 
     }
+}
+
+const signOut = async (req,res,next)=>{
+
+
+
+
 }
 
 export { signUp ,signIn };

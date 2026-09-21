@@ -1,7 +1,7 @@
 import express, { json } from 'express'
 import {PORT} from './config/env.js'
 import dbConncetion from './database/mongodb.js'
-import loggerMiddleware from './middleware/logger.js'
+import loggerMiddleware from './middleware/userMiddleware.js'
 import  errorMiddleware from './middleware/middleware.js'
 import  cookieParser from 'cookie-parser'
 const app = express();
@@ -19,7 +19,7 @@ import user from './routes/user.routes.js'
 
 
 
-app.use('/api/v1/user',loggerMiddleware, user);
+app.use('/api/v1/user', user);
 app.use('/api/v1/subscribtion' , subscribtion)  
 app.use('/api/v1/Auth', Auth);
 
