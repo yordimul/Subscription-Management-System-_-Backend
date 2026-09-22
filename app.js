@@ -1,9 +1,11 @@
 import express, { json } from 'express'
 import {PORT} from './config/env.js'
 import dbConncetion from './database/mongodb.js'
-import loggerMiddleware from './middleware/userMiddleware.js'
+import arcjetmiddlewar from './middleware/arcjetmiddleware.js'
 import  errorMiddleware from './middleware/middleware.js'
 import  cookieParser from 'cookie-parser'
+
+
 const app = express();
 
 
@@ -11,6 +13,7 @@ const app = express();
 app.use(express.json());
 // app.use(express.urlencoded({extends:false}))
 app.use (cookieParser())
+app.use  (arcjetmiddlewar)
 
 
 import Auth from './routes/Auth.routes.js'
@@ -19,9 +22,12 @@ import user from './routes/user.routes.js'
 
 
 
+
 app.use('/api/v1/user', user);
 app.use('/api/v1/subscribtion' , subscribtion)  
 app.use('/api/v1/Auth', Auth);
+
+
 
 app.use(errorMiddleware);
 
